@@ -1,0 +1,5 @@
+ORIG_PN="Sphinx"
+inherit distutils
+
+DESCRIPTION="Python documentation generator"
+HOMEPAGE="http://sphinx.pocoo.org/"
