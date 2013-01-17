@@ -1,0 +1,13 @@
+ORIG_PN="Sphinx"
+inherit distutils
+
+NAME="python-sphinx"
+VERSION=1.1.3
+RELEASE=1
+CATEGORY="Python"
+SUMMARY="Python documentation generator"
+DESCRIPTION="Sphinx is a tool that makes it easy to create intelligent and
+beautiful documentation. It was originally created to translate the new Python
+documentation, and it has excellent support for the documentation of Python
+projects, but other documents can be written with it too."
+HOMEPAGE="http://sphinx-doc.org/"
