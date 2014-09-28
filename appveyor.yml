@@ -1,0 +1,27 @@
+environment:
+  matrix:
+  - VERSION: "-x86"
+  - VERSION: ""
+
+init:
+# Carriage returns are bad
+  - git config --global core.autocrlf input
+
+install:
+  - choco install cyg-get $env:VERSION
+  - "set PATH=%PATH%;C:\\tools\\cygwin"
+  - "cyg-get cygport >> cyg-get.log"
+  - "cyg-get python >> cyg-get.log"
+  - "cyg-get python-imaging >> cyg-get.log"
+  - "cyg-get python-pygments >> cyg-get.log"
+  - "cyg-get python-setuptools >> cyg-get.log"
+
+build_script:
+  - C:\tools\cygwin\bin\sh -lc "uname -a;
+      cygport --version;
+      cd /cygdrive/c/projects/cygwin-python-sphinx;
+      cygport python-sphinx.cygport download;
+      cygport python-sphinx.cygport all"
+
+artifacts:
+  - path: 'python-sphinx-*\dist\python-sphinx\*'
