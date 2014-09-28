@@ -8,7 +8,7 @@ init:
   - git config --global core.autocrlf input
 
 install:
-  - choco install cyg-get $env:VERSION
+  - "choco install cyg-get %VERSION%"
   - "set PATH=%PATH%;C:\\tools\\cygwin"
   - "cyg-get cygport >> cyg-get.log"
   - "cyg-get python >> cyg-get.log"
