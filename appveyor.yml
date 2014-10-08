@@ -1,14 +1,14 @@
 environment:
   matrix:
-  - CYGWINSETUP: "setup-x86.exe"
-  - CYGWINSETUP: "setup-x86_64.exe"
+  - CYGWINSETUP: "http://cygwin.com/setup-x86.exe"
+  - CYGWINSETUP: "http://cygwin.com/setup-x86_64.exe"
 
 init:
 # Carriage returns are bad
   - git config --global core.autocrlf input
 
 install:
-  - ps: (new-object net.webclient).DownloadFile($("http://cygwin.com/"+$env:CYGWINSETUP), "C:\cygwin\setup.exe")
+  - ps: (new-object net.webclient).DownloadFile($env:CYGWINSETUP, "C:\cygwin\setup.exe")
   - ps: foreach ($pkg in @("cygport","python","python-imaging","python-pygments","python-setuptools")) {
           Write-Host $("Installing "+$pkg)
           & "C:/cygwin/setup.exe" -q -n -g -P $pkg >$null 2>&1
