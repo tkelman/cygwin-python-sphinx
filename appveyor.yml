@@ -10,7 +10,7 @@ init:
 install:
   - mkdir C:\cygwin
   - ps: (new-object net.webclient).DownloadFile($env:CYGWINSETUP, "C:\cygwin\setup.exe")
-  - ps: C:\cygwin\setup.exe -q -n
+  - C:\cygwin\setup.exe -q -n
 #>$null 2>&1
   - ps: foreach ($pkg in @("cygport","python","python-imaging","python-pygments","python-setuptools")) {
           Write-Host $("Installing "+$pkg);
