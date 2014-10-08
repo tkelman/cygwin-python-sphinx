@@ -10,13 +10,12 @@ init:
 install:
   - mkdir C:\cygwin
   - ps: (new-object net.webclient).DownloadFile($env:CYGWINSETUP, "C:\cygwin\setup.exe")
-  - C:\cygwin\setup.exe -q -n
-#>$null 2>&1
-  - ps: foreach ($pkg in @("cygport","python","python-imaging","python-pygments","python-setuptools")) {
-          Write-Host $("Installing "+$pkg);
-          & C:\cygwin\setup.exe -q -n -g -P $pkg
-        }
-#>$null 2>&1
+#  - C:\cygwin\setup.exe -q -n
+  - C:\cygwin\setup.exe -q -n -g -P cygport
+  - C:\cygwin\setup.exe -q -n -g -P python
+  - C:\cygwin\setup.exe -q -n -g -P python-imaging
+  - C:\cygwin\setup.exe -q -n -g -P python-pygments
+  - C:\cygwin\setup.exe -q -n -g -P python-setuptools
 
 build_script:
   - C:\cygwin\bin\sh -lc "uname -a;
