@@ -8,10 +8,10 @@ init:
   - git config --global core.autocrlf input
 
 install:
-  - ps: (new-object net.webclient).DownloadFile($("http://cygwin.com/"+$env:SETUP), $("C:/cygwin/"+$env:SETUP))
+  - ps: (new-object net.webclient).DownloadFile($("http://cygwin.com/"+$env:SETUP), "C:/cygwin/setup.exe")
   - ps: foreach ($pkg in @("cygport","python","python-imaging","python-pygments","python-setuptools")) {
           Write-Host $("Installing "+$pkg)
-          & $("C:/cygwin/"+$env:SETUP) -q -n -g -P $pkg >$null 2>&1
+          & "C:/cygwin/setup.exe" -q -n -g -P $pkg >$null 2>&1
         }
 
 build_script:
